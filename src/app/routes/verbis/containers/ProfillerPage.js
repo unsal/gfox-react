@@ -148,7 +148,7 @@ class Datagrid extends React.Component {
                                           <td>{key.timestamp}</td>
                                           <td>
                                             <UiDialogLauncher header="<h4><i className='fa fa-warning'/> Bu keyi silmek istediğinizden emin misiniz?</h4>" content={<SilDialogKutusu />} className="btn btn-default">
-                                              keyi Sil
+                                              Sil
                                             </UiDialogLauncher>
                                           </td>
                                         </tr>;
