@@ -1,0 +1,159 @@
+{
+  "items": [
+    {
+      "title": "Göstergeler",
+
+      "icon": "fa fa-lg fa-fw fa-home",
+      "items": [
+        {
+          "route": "/gostergeler/kpi",
+          "title": "KPI"
+        },
+        {
+          "route": "/gostergeler/raporlar",
+          "title": "Raporlar"
+        }
+      ]
+    },
+    {
+      "title": "VERBIS",
+      "icon": "fa fa-lg fa-fw fa-institution",
+      "items": [
+        {
+          "icon": "fa fa-tags",
+          "title": "Genel Tanımlar",
+          "items": [
+              {
+                "icon": "fa fa-user",
+                "title": "Profiller",
+                "route": "/verbis/profiller"
+              },
+              {
+                "icon": "fa fa-group",
+                "title": "Birimler",
+                "route": "/verbis/birimler"
+              },
+              {
+                "icon": "fa fa-shield",
+                "title": "Kişisel Veriler",
+                "route": "/verbis/kv"
+              },
+              {
+                "icon": "fa fa-cogs",
+                "title": "İşlenme Amacı",
+                "route": "/verbis/islenmeamaci"
+              },
+              {
+                "icon": "fa fa-stack-overflow",
+                "title": "Toplama Kanalları",
+                "route": "/verbis/toplamakanallari"
+              },
+              {
+                "icon": "fa fa-hdd-o",
+                "title": "KV Sistemler",
+                "route": "/verbis/kvsistemler"
+              },
+              {
+                "icon": "fa fa-files-o",
+                "title": "KV Dokümanlar",
+                "route": "/verbis/kvdokumanlar"
+              },
+              {
+                "icon": "fa fa-columns",
+                "title": "Dayananklar",
+                "route": "/verbis/dayanaklar"
+              },
+              {
+                "icon": "fa fa-folder-open-o",
+                "title": "Arşiv Ortamlar",
+                "route": "/verbis/arsivortamlari"
+              },
+              {
+                "icon": "fa fa-clock-o",
+                "title": "Saklama Süresi",
+                "route": "/verbis/saklamasuresi"
+              },
+              {
+                "icon": "fa fa-sitemap",
+                "title": "Kurumlar",
+                "route": "/verbis/kurumlar"
+              },
+              {
+                "icon": "fa fa-share-square-o",
+                "title": "Paylaşım Amacı",
+                "route": "/verbis/paylasimamaci"
+              },
+              {
+                "icon": "fa fa-share",
+                "title": "Paylaşım Şekli",
+                "route": "/verbis/paylasimsekli"
+              },
+              {
+                "icon": "fa fa-flag-o",
+                "title": "Güvenli Ülkeler",
+                "route": "/verbis/guvenliulkeler"
+              }
+          ]
+        },
+        {
+          "icon": "fa fa-tag",
+          "title": "Süreç Sahibi",
+          "route": "/verbis/surecsahibi"
+        },
+        {
+          "icon": "fa fa-institution",
+          "title": "Verbis KV",
+          "route": "/verbis/verbiskv"
+        },
+        {
+          "icon": "fa fa-tag",
+          "title": "Denetim Faaliyeti",
+          "route": "/verbis/denetimfaaliyeti"
+        },
+        {
+          "icon": "fa fa-tag",
+          "title": "Süreç İyileştirme",
+          "route": "/verbis/sureciyilestirme"
+        }
+      ]
+    },
+    {
+      "title": "KV Talepleri",
+      "route": "/kvtalepleri",
+      "icon": "fa fa-lg fa-fw fa-inbox",
+      "badge": {
+        "label": "5",
+        "class": "badge pull-right bg-color-red"
+      }
+    },
+    {
+      "title": "Sorgula",
+      "route": "/sorgula",
+      "icon": "fa fa-lg fa-fw fa-inbox"
+    },
+    {
+      "title": "Ayarlar",
+      "icon": "fa fa-lg fa-fw fa-bar-chart-o",
+      "items": [
+        {
+          "title": "Kullanıcılar",
+          "route": "/ayarlar/kullanicilar"
+        },
+        {
+          "title": "Verbis Entegrasyon",
+          "route": "/ayarlar/verbisentegrasyon"
+        },
+        {
+          "title": "Seçenekler",
+          "route": "/ayarlar/secenekler"
+        }
+      ]
+    },
+    {
+      "title": "Çıkış",
+      "icon": "fa fa-lg fa-fw fa-table",
+      "route": "/cikis"
+    }
+
+  ]
+}
