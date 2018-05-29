@@ -50,18 +50,6 @@ class Datagrid extends React.Component {
     }
   }
 
-  // jsonToState() {
-  //   axios
-  //         .get("assets/data/profiller.json")
-  //         .then(res => {
-  //           const data = res.data;
-  //           this.setState({ data });
-  //         })
-  //         .catch(err => {
-  //           console.log(err);
-  //         });
-  // }
-
   dbToState() {
     const url = gfoxConfig.apiURL+"/birimler";
     // console.log(url)
