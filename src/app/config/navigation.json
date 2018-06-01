@@ -41,7 +41,7 @@
               {
                 "icon": "fa fa-cogs",
                 "title": "İşlenme Amacı",
-                "route": "/verbis/islenmeamaci"
+                "route": "/verbis/islemeamaclari"
               },
               {
                 "icon": "fa fa-stack-overflow",

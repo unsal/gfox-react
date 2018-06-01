@@ -17,5 +17,17 @@ export default {
         System.import("./containers/BirimlerPage").then(m => { cb(null, m.default); });
       }
     },
+    {
+      path: "kv",
+      getComponent(nextState, cb) {
+        System.import("./containers/KvPage").then(m => { cb(null, m.default); });
+      }
+    },
+    {
+      path: "islemeamaclari",
+      getComponent(nextState, cb) {
+        System.import("./containers/IslemeAmaclariPage").then(m => { cb(null, m.default); });
+      }
+    },
   ]
 };
