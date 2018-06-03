@@ -46,32 +46,32 @@
               {
                 "icon": "fa fa-stack-overflow",
                 "title": "Toplama Kanalları",
-                "route": "/verbis/toplamakanallari"
+                "route": "/verbis/kanallar"
               },
               {
                 "icon": "fa fa-hdd-o",
                 "title": "KV Sistemler",
-                "route": "/verbis/kvsistemler"
+                "route": "/verbis/sistemler"
               },
               {
                 "icon": "fa fa-files-o",
                 "title": "KV Dokümanlar",
-                "route": "/verbis/kvdokumanlar"
+                "route": "/verbis/dokumanlar"
               },
               {
                 "icon": "fa fa-columns",
-                "title": "Dayananklar",
+                "title": "Dayanaklar",
                 "route": "/verbis/dayanaklar"
               },
               {
                 "icon": "fa fa-folder-open-o",
                 "title": "Arşiv Ortamlar",
-                "route": "/verbis/arsivortamlari"
+                "route": "/verbis/ortamlar"
               },
               {
                 "icon": "fa fa-clock-o",
                 "title": "Saklama Süresi",
-                "route": "/verbis/saklamasuresi"
+                "route": "/verbis/sureler"
               },
               {
                 "icon": "fa fa-sitemap",
@@ -80,18 +80,18 @@
               },
               {
                 "icon": "fa fa-share-square-o",
-                "title": "Paylaşım Amacı",
-                "route": "/verbis/paylasimamaci"
+                "title": "Paylaşım Amaçları",
+                "route": "/verbis/paylasimamaclari"
               },
               {
                 "icon": "fa fa-share",
-                "title": "Paylaşım Şekli",
-                "route": "/verbis/paylasimsekli"
+                "title": "Paylaşım Şekilleri",
+                "route": "/verbis/paylasimsekilleri"
               },
               {
                 "icon": "fa fa-flag-o",
                 "title": "Güvenli Ülkeler",
-                "route": "/verbis/guvenliulkeler"
+                "route": "/verbis/ulkeler"
               }
           ]
         },
