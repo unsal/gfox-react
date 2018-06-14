@@ -3,7 +3,7 @@ import React from 'react';
 import {Stats, WidgetGrid, JarvisWidget}  from '../../../components';
 import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
-import FormEkle from "./profiller-form";
+import FormEkle from "../forms/profiller-form";
 import {gfoxConfig}  from '../../../config/config';
 import { MyErrorMessage, MyIcon } from '../unsal.js';
 
