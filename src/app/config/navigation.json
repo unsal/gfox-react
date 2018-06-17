@@ -98,7 +98,28 @@
         {
           "icon": "fa fa-tag",
           "title": "Süreç Sahibi",
-          "route": "/verbis/surecsahibi"
+          "items": [
+            {
+              "icon": "fa fa-user",
+              "title": "Paylaşılan Kurumlar",
+              "route": "/verbis/ss/kurumlar"
+            },
+            {
+              "icon": "fa fa-shield",
+              "title": "KV İçeren Dokümanlar",
+              "route": "/verbis/ss/kvdokumanlar"
+            },
+            {
+              "icon": "fa fa-shield",
+              "title": "Toplama Kanalları",
+              "route": "/verbis/ss/kanallar"
+            },
+            {
+              "icon": "fa fa-cogs",
+              "title": "Kullanılan Sistemler",
+              "route": "/verbis/ss/sistemler"
+            }
+          ]
         },
         {
           "icon": "fa fa-institution",

@@ -4,6 +4,8 @@ export default {
 
   indexRoute: { onEnter: (nextState, replace) => replace("/tanimlar/profiller") },
 
+  // GENEL TANIMLAR
+
   childRoutes: [
     {
       path: "profiller",
@@ -89,6 +91,30 @@ export default {
         System.import("./tanimlar/ulkeler").then(m => { cb(null, m.default); });
       }
     },
-
+    // SÜREÇ SAHİBİ
+    {
+      path: "ss/kurumlar",
+      getComponent(nextState, cb) {
+        System.import("./ss/kurumlar").then(m => { cb(null, m.default); });
+      }
+    },
+    {
+      path: "ss/kvdokumanlar",
+      getComponent(nextState, cb) {
+        System.import("./ss/kvdokumanlar").then(m => { cb(null, m.default); });
+      }
+    },
+    {
+      path: "ss/kanallar",
+      getComponent(nextState, cb) {
+        System.import("./ss/kanallar").then(m => { cb(null, m.default); });
+      }
+    },
+    {
+      path: "ss/sistemler",
+      getComponent(nextState, cb) {
+        System.import("./ss/sistemler").then(m => { cb(null, m.default); });
+      }
+    },
   ]
 };
