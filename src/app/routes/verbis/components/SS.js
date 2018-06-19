@@ -41,7 +41,7 @@ class SilDialogKutusu extends React.Component {
   }
 }
 
-
+// FIXME: KURUMLAR
 export class SSKurumlar extends React.Component {
   constructor(props) {
     super(props);
@@ -164,7 +164,7 @@ export class SSKurumlar extends React.Component {
 }
 
 
-
+// FIXME: SS Dokumanlar
 export class SSDokumanlar extends React.Component {
   constructor(props) {
     super(props);
@@ -238,6 +238,7 @@ export class SSDokumanlar extends React.Component {
                                     <th>Kodu</th>
                                     <th>Süreç Sahibi </th>
                                     <th>Doküman </th>
+                                    <th>Yayın Durumu </th>
                                     <th>Zaman Damgası</th>
                                     <th>Aksiyon</th>
                                   </tr>
@@ -253,6 +254,7 @@ export class SSDokumanlar extends React.Component {
                                                   </td>
                                                   <td> {key.birim} </td>
                                                   <td> {key.dokuman} </td>
+                                                  <td> {key.yayin} </td>
                                                   <td> {key.timestamp}</td>
                                                   <td>
                                                     <UiDialogLauncher header="<h4><i className='fa fa-warning'/> Bu keyi silmek istediğinizden emin misiniz?</h4>" content={<SilDialogKutusu />} className="btn btn-default">
