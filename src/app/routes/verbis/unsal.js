@@ -15,3 +15,7 @@ export const MyIcon = (props)=> {
   return <i className={"fa-fw fa "+props.name}/>
 
 }
+
+export const MySpinner = (props) => {
+  return <h2>{props.isLoading?<i className="fa fa-refresh fa-spin" />:props.title}</h2>
+}

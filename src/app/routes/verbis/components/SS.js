@@ -5,7 +5,7 @@ import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
 import FormEkle from "../forms/profiller-form";
 import {gfoxConfig}  from '../../../config/config';
-import { MyErrorMessage, MyIcon } from '../unsal.js';
+import { MyErrorMessage, MyIcon, MySpinner } from '../unsal.js';
 
 
 // import data from "./data-data.json";
@@ -48,7 +48,9 @@ export class SSKurumlar extends React.Component {
     this.state = {
       data: [],
       apiServiceUP: true, //render fonksyinu ilk anda diğer kırmı errmessage durumunu da render ettiği için true olarak başlattım.
-      searchString: ""
+      searchString: "",
+      isLoading: true,
+      didMount: false
     }
   }
 
@@ -58,7 +60,7 @@ export class SSKurumlar extends React.Component {
     axios.get(url)
         .then(res => {
               const api = { data: res.data, apiServiceUP: true }
-              this.setState({ ...api});
+              this.setState({ ...api, didMount: true});
         })
         .catch(err => {
           console.log(err);
@@ -67,8 +69,13 @@ export class SSKurumlar extends React.Component {
   }
 
   componentDidMount() {
-
         this.dbToState();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.didMount !== this.state.didMount) {
+      this.setState({ isLoading: false })
+    }
   }
 
   handleChange = e => {
@@ -99,11 +106,13 @@ export class SSKurumlar extends React.Component {
                     <article className="col-sm-12">
                       <JarvisWidget editbutton={false} color="light" colorbutton={false}>
                         <header>
-                          <h2>{this.props.title}</h2>
+                          <MySpinner title={this.props.title} isLoading={this.state.isLoading} />
                           <h2>
+                            {this.state.isLoading?'':
                             <button className="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
                               Ekle
                             </button>
+                            }
                           </h2>
 
                         </header>
@@ -164,14 +173,16 @@ export class SSKurumlar extends React.Component {
 }
 
 
-// FIXME: SS Dokumanlar
+// FIXME: KV içeren Dokumanlar
 export class SSDokumanlar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       apiServiceUP: true, //render fonksyinu ilk anda diğer kırmı errmessage durumunu da render ettiği için true olarak başlattım.
-      searchString: ""
+      searchString: "",
+      didMount: false,
+      isLoading: true
     }
   }
 
@@ -181,7 +192,7 @@ export class SSDokumanlar extends React.Component {
     axios.get(url)
         .then(res => {
               const api = { data: res.data, apiServiceUP: true }
-              this.setState({ ...api});
+              this.setState({ ...api, didMount: true });
         })
         .catch(err => {
           console.log(err);
@@ -191,6 +202,12 @@ export class SSDokumanlar extends React.Component {
 
   componentDidMount() {
         this.dbToState();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.didMount !== this.state.didMount) {
+       this.setState({ isLoading: false })
+    }
   }
 
   handleChange = e => {
@@ -221,11 +238,13 @@ export class SSDokumanlar extends React.Component {
                     <article className="col-sm-12">
                       <JarvisWidget editbutton={false} color="light" colorbutton={false}>
                         <header>
-                          <h2>{this.props.title}</h2>
+                          <MySpinner title={this.props.title} isLoading={this.state.isLoading} />
                           <h2>
+                          {this.state.isLoading?'':
                             <button className="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
                               Ekle
                             </button>
+                          }
                           </h2>
 
                         </header>
