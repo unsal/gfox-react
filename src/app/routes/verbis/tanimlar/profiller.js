@@ -3,7 +3,7 @@ import React from 'react';
 import Tanimlar from '../components/Tanimlar.js';
 
 const Component = () => {
-  return <Tanimlar title="Profiller" data="/tanimlar/profiller"/>
+  return <Tanimlar title="Profiller" datasource="/tanimlar/profiller"/>
 }
 
 export default Component;

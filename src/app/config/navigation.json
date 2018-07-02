@@ -96,33 +96,33 @@
           ]
         },
         {
-          "icon": "fa fa-tag",
+          "icon": "fa fa-group",
           "title": "Süreç Sahibi",
           "items": [
             {
-              "icon": "fa fa-user",
+              "icon": "fa fa-send-o",
               "title": "Paylaşılan Kurumlar",
               "route": "/verbis/ss/kurumlar"
             },
             {
-              "icon": "fa fa-shield",
+              "icon": "fa fa-files-o",
               "title": "KV İçeren Dokümanlar",
               "route": "/verbis/ss/kvdokumanlar"
             },
             {
-              "icon": "fa fa-shield",
+              "icon": "fa fa-stack-overflow",
               "title": "Toplama Kanalları",
-              "route": "/verbis/ss/kanallar"
+              "route": "/verbis/ss/toplamakanallari"
             },
             {
-              "icon": "fa fa-cogs",
+              "icon": "fa fa-hdd-o",
               "title": "Kullanılan Sistemler",
-              "route": "/verbis/ss/sistemler"
+              "route": "/verbis/ss/kullanilansistemler"
             }
           ]
         },
         {
-          "icon": "fa fa-institution",
+          "icon": "fa fa-shield",
           "title": "Verbis KV",
           "route": "/verbis/verbiskv"
         },

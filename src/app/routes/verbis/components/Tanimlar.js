@@ -67,7 +67,7 @@ export default class Tanimlar extends React.Component {
   // }
 
   dbToState() {
-    const url = gfoxConfig.apiURL+this.props.data;
+    const url = gfoxConfig.apiURL+this.props.datasource;
     // console.log(url)
     axios.get(url)
         .then(res => {

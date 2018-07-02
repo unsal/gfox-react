@@ -3,7 +3,7 @@ import React from 'react';
 import Tanimlar from '../components/Tanimlar.js';
 
 const Component = () => {
-  return <Tanimlar title="Toplama Kanalları" data="/tanimlar/kanallar"/>
+  return <Tanimlar title="Toplama Kanalları" datasource="/tanimlar/kanallar"/>
 }
 
 export default Component;

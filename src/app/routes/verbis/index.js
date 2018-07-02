@@ -105,15 +105,15 @@ export default {
       }
     },
     {
-      path: "ss/kanallar",
+      path: "ss/toplamakanallari",
       getComponent(nextState, cb) {
-        System.import("./ss/kanallar").then(m => { cb(null, m.default); });
+        System.import("./ss/toplamakanallari").then(m => { cb(null, m.default); });
       }
     },
     {
-      path: "ss/sistemler",
+      path: "ss/kullanilansistemler",
       getComponent(nextState, cb) {
-        System.import("./ss/sistemler").then(m => { cb(null, m.default); });
+        System.import("./ss/kullanilansistemler").then(m => { cb(null, m.default); });
       }
     },
   ]
