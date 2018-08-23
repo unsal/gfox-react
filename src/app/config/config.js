@@ -2,7 +2,7 @@
 const SmartadminConfig = {
     menu_speed: 200,
 
-    smartSkin: "smart-style-6",
+    smartSkin: "smart-style-4",
 
     apiRootUrl: "assets/api",
     buildUrl: "build",
@@ -49,7 +49,7 @@ const SmartadminConfig = {
 
         {
             name: "smart-style-4",
-            logo: "assets/img/logo-pale.png",
+            logo: "assets/img2/logo-gfox2.png",
             class: "btn btn-xs btn-block txt-color-white margin-top-5",
             style: {
                 background: '#bbc0cf',

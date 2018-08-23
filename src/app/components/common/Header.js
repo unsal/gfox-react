@@ -124,7 +124,7 @@ export default class Header extends React.Component {
 
 
         {/* multiple lang dropdown : find all flags in the flags page */}
-        <LanguageSelector />
+        {/* <LanguageSelector /> */}
 
 
       </div>

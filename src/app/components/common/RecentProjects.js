@@ -33,10 +33,11 @@ export default class RecentProjects extends React.Component{
             <div className="project-context hidden-xs dropdown">
 
                 <span className="label">
-                    <Msg phrase="Projects" />
+                    <Msg phrase="Kullanıcı" />
                 </span>
+
                 <span className="project-selector dropdown-toggle" data-toggle="dropdown">
-                    <Msg phrase="Recent projects" />
+                    <Msg phrase="Son işlemler" />
                     { projects.length ?
                         <i  className="fa fa-angle-down"/>
                             : null }
