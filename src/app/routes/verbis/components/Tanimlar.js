@@ -3,7 +3,10 @@ import React from 'react';
 import {Stats, WidgetGrid, JarvisWidget}  from '../../../components';
 import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
-import FormEkle from "../forms/profiller-form";
+
+// Tanım Ekle
+import TanimEkle from "../forms/tanim-ekle"
+
 import {gfoxConfig}  from '../../../config/config';
 import { MyErrorMessage, MyIcon, MySpinner } from '../unsal.js';
 
@@ -185,8 +188,23 @@ export default class Tanimlar extends React.Component {
                     </article>
                   </div>
                 </WidgetGrid>
+                {
+                   this.props.title == "Profiller"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Birimler"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Kişisel Veriler"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "İşlenme Amacı"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Toplama Kanalları"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "KV Sistemler"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "KV Dokümanlar"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Dayanaklar"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Arşiv Ortamlar"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Saklama Süresi"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Kurumlar"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Paylaşım Amaçları"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Paylaşım Şekilleri"?<TanimEkle title={this.props.title} id="myModal"/>:
+                   this.props.title == "Güvenli Ülkeler"?<TanimEkle title={this.props.title} id="myModal"/>:""
 
-                <FormEkle id="myModal"/>
+                }
                 </div>
     }
 

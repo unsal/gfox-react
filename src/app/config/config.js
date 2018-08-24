@@ -49,7 +49,7 @@ const SmartadminConfig = {
 
         {
             name: "smart-style-4",
-            logo: "assets/img2/logo-gfox2.png",
+            logo: "assets/img/logo.png",
             class: "btn btn-xs btn-block txt-color-white margin-top-5",
             style: {
                 background: '#bbc0cf',
