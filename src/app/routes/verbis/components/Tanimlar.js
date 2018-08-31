@@ -12,30 +12,71 @@ import { MyErrorMessage, MyIcon, MySpinner } from '../unsal.js';
 
 
 // import data from "./data-data.json";
-class SilDialogKutusu extends React.Component {
-  _submitDialog = e => {
-    console.log("submit stuff");
-    this.props.closeDialog(e);
+class SilBox extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      url: '',
+      message: ''
+    }
+  }
+
+  componentDidMount() {
+    this.setState ({
+      url: gfoxConfig.apiURL+'/tanimlar/del/profiller',
+      message: ''
+    });
+  }
+
+  handleVazgec = (event) => {
+    console.log("Vazgeçildi..");
+    this.props.closeDialog(event);
   };
+
+
+  // Sil
+  handleSubmit = (event) => {
+
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    formData.set('pidm', "68");
+
+    // form yerine arg için:
+    // const {id, name, url } = this.state;
+    // axios.post(url, {id, name})
+
+    axios({
+      method: 'POST',
+      url: this.state.url,
+      data: formData,
+      // config: { headers: {'Content-Type': 'multipart/form-data' }}
+      })
+    .then(result=>{
+        this.setState({ error: false, message: this.props.pidm+ ' başarıyla silindi'});
+        console.log(result);
+    })
+    .catch(error => {
+      this.setState({ error: true, message: "Başarısız işlem!"})
+      console.log(error);
+    });
+  }
+
   render() {
     return (
       <div id="dialog_simple">
-        <form>
-          <p>
-            Eğer bu key kişisel veri ve süreç envanteri
-            ile ilişkilendirilmişse silinemeyecektir.
-            Öncelikle tüm ilişkileri silmeniz gerekir.
+        <form onSubmit={this.handleSubmit}>
+          <p>{this.props.pidm+ " Eğer bu key kişisel veri ve süreç envanteri ile ilişkilendirilmişse silinemeyecektir. Öncelikle tüm ilişkileri silmeniz gerekir."}
           </p>
+          <p>{this.state.message}</p>
 
           <div>
-            <button className="btn btn-default" onClick={this._submitDialog}>
+            <button className="btn btn-default" onClick={this.handleVazgec}>
               <i className="fa fa-trash-o" />&nbsp; Vazgeç
             </button> {' '}
-            <button
-              className="btn btn-danger"
-              onClick={this.props.closeDialog}
-            >
-              <i className="fa fa-times" />&nbsp; Sil
+            <button type="submit" className="btn btn-danger">
+              <i className="fa fa-times" />&nbsp; Onaylıyorum
             </button>
           </div>
         </form>
@@ -56,18 +97,6 @@ export default class Tanimlar extends React.Component {
       didMount: false
     }
   }
-
-  // jsonToState() {
-  //   axios
-  //         .get("assets/data/profiller.json")
-  //         .then(res => {
-  //           const data = res.data;
-  //           this.setState({ data });
-  //         })
-  //         .catch(err => {
-  //           console.log(err);
-  //         });
-  // }
 
   dbToState() {
     const url = gfoxConfig.apiURL+this.props.datasource;
@@ -141,8 +170,7 @@ export default class Tanimlar extends React.Component {
                               <table className="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox">
                                 <thead>
                                   <tr>
-                                    <th>Kodu</th>
-                                    <th>
+                                    <th style={{width:'60%'}}>
                                       <input autoFocus type="text" placeholder="" onChange={this.handleChange} />
                                       <i className="fa fa-fw fa-xs fa-search" />
                                     </th>
@@ -160,11 +188,8 @@ export default class Tanimlar extends React.Component {
 
                                     data
                                       .map(key => {
-                                              return <tr key={key.id}>
-                                                  <td style={{ textAlign: "right" }}>
-                                                    {key.id}
-                                                  </td>
-                                                  <td> {key.name} </td>
+                                              return <tr key={key.pidm}>
+                                                  <td><b> {key.name} </b></td>
 
                                                   {isSistemler?<th>{key.type==="1"?<MyIcon name="fa-hdd-o"/>:<MyIcon name="fa-cloud"/>}</th>:""}
                                                   {isUlkeler?<th>{key.phone_area}</th>:""}
@@ -172,7 +197,11 @@ export default class Tanimlar extends React.Component {
 
                                                   <td>{key.timestamp}</td>
                                                   <td>
-                                                    <UiDialogLauncher header="<h4><i className='fa fa-warning'/> Bu keyi silmek istediğinizden emin misiniz?</h4>" content={<SilDialogKutusu />} className="btn btn-default">
+                                                    {/* TODO: SIL BOX */}
+                                                    <UiDialogLauncher
+                                                      header={"'"+key.pidm+"' için <h4><i className='fa fa-warning'/>Silme işlemini onaylıyor musunuz?</h4>"}
+                                                      content={<SilBox pidm={key.pidm} />}
+                                                      className="btn btn-default">
                                                       Sil
                                                     </UiDialogLauncher>
                                                   </td>
