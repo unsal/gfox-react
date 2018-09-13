@@ -32,22 +32,14 @@ class Tanimlar extends React.Component {
       searchString: "",
       isLoading: true,
       didMount: false,
-
-      //delete
-      error: false,
-
-      url: "",
-      url_delete: "",
-      message: "",
-      record_deleted: false
+      url: gfoxConfig.apiURL + '/tanimlar/'+this.props.id
     };
   }
 
   // load data to redux state
   loadDB() {
-    const url = gfoxConfig.apiURL + '/tanimlar/'+this.props.id;
     axios
-      .get(url)
+      .get(this.state.url)
       .then(res => {
         const data = res.data;
         store.dispatch(updateStoreDataGfox(data)); //store data güncelle
@@ -63,11 +55,6 @@ class Tanimlar extends React.Component {
 
   componentDidMount() {
     this.loadDB();
-    this.setState({
-      url_delete: gfoxConfig.apiURL + "/tanimlar/del/profiller",
-      message:
-        "Not: Bu kayıt kişisel veri ve süreç envanteri ile ilişkilendirilmişse silinemeyecektir. Öncelikle tüm ilişkileri silmeniz gerekir."
-    });
   }
 
   componentDidUpdate(prevProps, prevState) {
