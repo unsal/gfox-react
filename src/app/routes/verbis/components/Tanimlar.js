@@ -13,7 +13,7 @@ import axios from "axios";
 import TanimEkle from "../forms/TanimEkle";
 import SilBox from "./SilBox.js";
 
-import { gfoxConfig } from "../../../config/config";
+import { getApiURL } from "../../../config/config";
 import { MyErrorMessage, MyIcon, MySpinner } from "../unsal.js";
 
 //Redux
@@ -32,7 +32,7 @@ class Tanimlar extends React.Component {
       searchString: "",
       isLoading: true,
       didMount: false,
-      url: gfoxConfig.apiURL + '/tanimlar/'+this.props.id
+      url: getApiURL.getTanimlar+'/'+this.props.id
     };
   }
 
@@ -83,12 +83,12 @@ class Tanimlar extends React.Component {
       // !!!because the component is rendered before the async data arrived, you should control before to render
 
       // Sistemler ve Ulkerler'deki ekstra kolonları basmak için kontrol
-      const isSistemler = this.props.title === "Sistemler";
-      const isUlkeler = this.props.title === "Güvenli Ülkeler";
+      const isSistemler = this.props.id === "kvsistemler";
+      const isUlkeler = this.props.id === "guvenliulkeler";
 
       let searchString = this.state.searchString.trim().toLowerCase();
 
-      let _data = data;
+      let _data = data; //reduxtan getir
 
       if (searchString.length > 0) {
         _data = _data.filter(key => {

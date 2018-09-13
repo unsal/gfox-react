@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-import { gfoxConfig } from "../../../config/config";
+import { getApiURL } from "../../../config/config";
 
 //Redux
 import { updateStoreDataGfox } from "../../../components/_gfox/GfoxActions";
@@ -11,7 +11,7 @@ export default class SilBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: "",
+      url: getApiURL.delTanimlar,
       message:
         "Not: Bu kayıt kişisel veri ve süreç envanteri ile ilişkilendirilmişse silinemeyecektir. Öncelikle tüm ilişkileri silmeniz gerekir.",
       record_deleted: false
@@ -19,9 +19,8 @@ export default class SilBox extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      url: gfoxConfig.apiURL + "/tanimlar/del"
-    });
+    console.log(this.props.id+" / "+this.props.pidm)
+    console.log(this.state.url)
   }
 
   // Sil
@@ -49,7 +48,7 @@ export default class SilBox extends React.Component {
           error: false,
           message: <strong>{pidm+ " başarıyla silindi"}</strong>
         });
-        console.log(this.state.message);
+        console.log("başarıyla silindi...");
       })
       .then (()=> {
         // Delete Table Row

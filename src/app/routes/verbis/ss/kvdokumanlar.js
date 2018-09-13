@@ -4,7 +4,7 @@ import {Stats, WidgetGrid, JarvisWidget}  from '../../../components';
 import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
 import FormEkle from "../forms/TanimEkle";
-import {gfoxConfig}  from '../../../config/config';
+import {getApiURL}  from '../../../config/config';
 import { MyErrorMessage, MyIcon, MySpinner } from '../unsal.js';
 
 // import data from "./data-data.json";
@@ -54,7 +54,7 @@ export class SSDokumanlar extends React.Component {
   }
 
   dbToState() {
-    const url = gfoxConfig.apiURL+this.props.datasource;
+    const url = getApiURL.getTanimlar+this.props.datasource;
     // console.log(url)
     axios.get(url)
         .then(res => {

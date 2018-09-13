@@ -1,7 +1,7 @@
 // Tanımlar > Profiller > Profil Ekle..
 
 import React from 'react';
-import {gfoxConfig}  from '../../../config/config';
+import {getApiURL}  from '../../../config/config';
 import axios from 'axios';
 import { updateStoreDataGfox } from "../../../components/_gfox/GfoxActions";
 
@@ -19,16 +19,13 @@ export default class TanimEkle extends React.Component {
       name:'',
       phone_area: '',
       secure:'',
-      url: '',
+      url: getApiURL.addTanimlar,
       message: '',
       error: false
     }
   }
 
   componentDidMount() {
-    this.setState ({
-      url: gfoxConfig.apiURL+'/tanimlar/add',
-    });
 
   }
 

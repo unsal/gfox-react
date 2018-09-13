@@ -4,7 +4,7 @@ import {Stats, WidgetGrid, JarvisWidget}  from '../../../components';
 import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
 import FormEkle from "../forms/TanimEkle";
-import {gfoxConfig}  from '../../../config/config';
+import {getApiURL}  from '../../../config/config';
 import { MyErrorMessage, MyIcon, MySpinner } from '../unsal.js';
 
 
@@ -56,7 +56,7 @@ export class SSKullanilanSistemler extends React.Component {
   }
 
   dbToState() {
-    const url = gfoxConfig.apiURL+this.props.datasource;
+    const url = getApiURL.apiURL+this.props.datasource;
     // console.log(url)
     axios.get(url)
         .then(res => {

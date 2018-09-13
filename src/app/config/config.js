@@ -333,9 +333,13 @@ if (SmartadminConfig.voice_command) {
 }
 
 
-export const gfoxConfig = {
-  apiURL: 'http://localhost:2300',
-  // apiURL: 'http://bt.ozyegin.edu.tr:5000/projeler'
+// API URL Settings
+const server = 'http://localhost:2300';
+
+export const getApiURL = {
+  getTanimlar: server+'/tanimlar',
+  addTanimlar: server+'/tanimlar/add',
+  delTanimlar: server+'/tanimlar/del',
 };
 
 
