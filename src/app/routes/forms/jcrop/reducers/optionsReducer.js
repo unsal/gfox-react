@@ -40,16 +40,10 @@ export default (state, action) => {
                 ...update
             };
         case (SET_OPTIONS):
-            return {
-                ...state,
-                ...action.options
-            };
+            return { ...state, ...action.options };
 
         case (JCROP_INIT):
-            return {
-                ...state,
-                ...action.options
-            }
+            return { ...state, ...action.options }
         default:
             return state;
     }

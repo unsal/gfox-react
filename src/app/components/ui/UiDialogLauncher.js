@@ -31,14 +31,18 @@ export default class UiDialogLauncher extends React.Component{
             $dialog.dialog('close');
         };
 
-        let _content = this.props.content
 
-        let content = React.createElement(_content.type, {
-            closeDialog: closeDialog
-        });
+        // let _content = this.props.content
+
+        // !!!! commentledim çünkü aşağıdaki bölüm çalışınca; pidm props değerinin taşımıyor dışardan buraya... yarım günüm gitti..
+        // Bunu yapınca Vazgeç butonu çalışmıyor... ona göre
+
+        // let content = React.createElement(_content.type, {
+        //     closeDialog: closeDialog
+        // });
 
 
-        ReactDOM.render(content, $dialog[0])
+        ReactDOM.render(this.props.content, $dialog[0])
     }
     render () {
         return (

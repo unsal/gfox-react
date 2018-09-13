@@ -3,6 +3,7 @@
 import React from 'react';
 import {gfoxConfig}  from '../../../config/config';
 import axios from 'axios';
+import { updateStoreDataGfox } from "../../../components/_gfox/GfoxActions";
 
 // Form Profil Ekle
 
@@ -46,7 +47,6 @@ export default class TanimEkle extends React.Component {
   handleSubmit = (event) => {
 
     event.preventDefault();
-
     const formData = new FormData(event.target);
 
     // form yerine arg için:
@@ -67,15 +67,15 @@ export default class TanimEkle extends React.Component {
       this.setState({ error: true, message: "Veritabanı Hatası!"})
       console.log(error);
     });
-
-
-
   }
 
   render() {
   return (
     <form onSubmit={this.handleSubmit}>
-        <div className="modal fade" id={this.props.id} tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+      <input type="hidden" name="id" value={this.props.id} />
+
+        <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -91,7 +91,7 @@ export default class TanimEkle extends React.Component {
                   <div className="col-md-12">
                     <div className="form-group">
 
-                  {this.props.title==="Saklama Süresi"?
+                  {this.props.id==="saklamasuresi"?
                        <select name="name" className="form-control" onChange={this.handleChange} >
                           <option value="2">2 ay</option>
                           <option value="6">6 ay</option>
@@ -100,15 +100,13 @@ export default class TanimEkle extends React.Component {
                           <option value="60">60 ay</option>
                           <option value="120">120 ay</option>
                        </select>:
-
-                      // FIXME: NAME
-                      <input type="text" name="name" className="form-control" placeholder={this.props.title+" Adı"} onChange={this.handleChange} required />
+                      <input autoFocus type="text" name="name" className="form-control" placeholder={this.props.title+" Adı"} onChange={this.handleChange} required />
                   }
                     </div>
                   </div>
                 </div>
 
-              {this.props.title==="Güvenli Ülkeler"?
+              {this.props.id==="guvenliulkeler"?
                         <div>
                               <div className="row">
                                 <div className="col-md-12">
@@ -143,7 +141,7 @@ export default class TanimEkle extends React.Component {
               </div>
 
                 <button type="button" className="btn btn-default" data-dismiss="modal">
-                  Vazgeç
+                  Kapat
                 </button>
 
                 <button type="submit" className="btn btn-primary" >

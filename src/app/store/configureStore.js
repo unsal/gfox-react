@@ -19,6 +19,9 @@ import outlookReducer from '../routes/outlook/outlookReducer'
 import {voiceReducer, VoiceMiddleware} from '../components/voice-control'
 import {voiceControlOn} from "../components/voice-control/VoiceActions";
 
+// Custom actions u2y
+import { gfoxReducer } from "../components/_gfox/gfoxReducer";
+
 export const rootReducer = combineReducers(
   {
     routing: routerReducer,
@@ -29,6 +32,7 @@ export const rootReducer = combineReducers(
     chat: chatReducer,
     events: eventsReducer,
     voice: voiceReducer,
+    gfox: gfoxReducer
   }
 );
 
@@ -46,7 +50,6 @@ store.dispatch(chatInit());
 
 if(config.voice_command_auto){
   store.dispatch(voiceControlOn());
-}
-
+};
 
 export default store;

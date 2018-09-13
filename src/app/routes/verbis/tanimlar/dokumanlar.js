@@ -3,7 +3,7 @@ import React from 'react';
 import Tanimlar from '../components/Tanimlar.js';
 
 const Component = () => {
-  return <Tanimlar title="KV Dokümanlar" datasource="/tanimlar/dokumanlar"/>
+  return <Tanimlar title="KV Dokümanlar" id="kvdokumanlar"/>
 }
 
 export default Component;

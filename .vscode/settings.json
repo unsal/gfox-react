@@ -1,0 +1,41 @@
+{
+ "favorites.sortDirection": "ASC",
+ "favorites.groupsFirst": true,
+ "favorites.root": [
+  {
+   "type": "Directory",
+   "name": "/Users/unsal/github/gfox/gfox-react/src/app/routes/verbis",
+   "parent_id": null,
+   "workspacePath": "src/app/routes/verbis",
+   "id": "nUiQMmGKwSVvX3L8"
+  },
+  {
+   "type": "Directory",
+   "name": "/Users/unsal/github/gfox/gfox-react/src/assets",
+   "parent_id": null,
+   "workspacePath": "src/assets",
+   "id": "lqYNM3uPFDmjzVZb"
+  },
+  {
+   "type": "Directory",
+   "name": "/Users/unsal/github/gfox/gfox-react/src/app/components/voice-control",
+   "parent_id": null,
+   "workspacePath": "src/app/components/voice-control",
+   "id": "NXMBLKVQUeH516g4"
+  },
+  {
+   "type": "Directory",
+   "name": "/Users/unsal/github/gfox/gfox-react/src/app/components/_gfox",
+   "parent_id": null,
+   "workspacePath": "src/app/components/_gfox",
+   "id": "fSPOgFYH1tn79AVL"
+  },
+  {
+   "type": "File",
+   "name": "/Users/unsal/github/gfox/gfox-react/src/app/app.js",
+   "parent_id": null,
+   "workspacePath": "src/app/app.js",
+   "id": "YbjeT1sLqvPwSEpm"
+  }
+ ]
+}

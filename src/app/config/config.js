@@ -2,7 +2,7 @@
 const SmartadminConfig = {
     menu_speed: 200,
 
-    smartSkin: "smart-style-4",
+    smartSkin: "smart-style-2",
 
     apiRootUrl: "assets/api",
     buildUrl: "build",

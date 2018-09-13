@@ -17,7 +17,7 @@ const routes = {
     // require('./routes/smartadmin-intel').default,
     // require('./routes/widgets').default,
     // require('./routes/outlook').default,
-    require('./routes/verbis').default
+    require('./routes/verbis').default,
     // require('./routes/ui').default,
     // require('./routes/graphs').default,
     // require('./routes/e-commerce').default,
