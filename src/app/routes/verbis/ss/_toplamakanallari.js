@@ -3,10 +3,9 @@ import React from 'react';
 import {Stats, WidgetGrid, JarvisWidget}  from '../../../components';
 import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
-import FormEkle from "../forms/TanimEkle";
-import {getApiURL}  from '../../../config/config';
+import FormEkle from "../forms/tanimekle";
+import {getAPI}  from '../../../config/config';
 import { MyErrorMessage, MyIcon, MySpinner } from '../unsal.js';
-
 
 // import data from "./data-data.json";
 class SilDialogKutusu extends React.Component {
@@ -42,8 +41,8 @@ class SilDialogKutusu extends React.Component {
 }
 
 
-// FIXME: Kullanılan Sistemler
-export class SSKullanilanSistemler extends React.Component {
+// FIXME: Toplama Kanalları
+export class SSToplamaKanallari extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +55,7 @@ export class SSKullanilanSistemler extends React.Component {
   }
 
   dbToState() {
-    const url = getApiURL.apiURL+this.props.datasource;
+    const url = getAPI.getTanimlar+this.props.datasource;
     // console.log(url)
     axios.get(url)
         .then(res => {
@@ -125,7 +124,7 @@ export class SSKullanilanSistemler extends React.Component {
                                   <tr>
                                     <th>Kodu</th>
                                     <th>Süreç Sahibi </th>
-                                    <th>Kullanılan Sistem </th>
+                                    <th>Toplama Kanalı </th>
                                     <th>Zaman Damgası</th>
                                     <th>Aksiyon</th>
                                   </tr>
@@ -140,7 +139,7 @@ export class SSKullanilanSistemler extends React.Component {
                                                     {key.id}
                                                   </td>
                                                   <td> {key.birim} </td>
-                                                  <td> {key.sistem} </td>
+                                                  <td> {key.kanal} </td>
                                                   <td> {key.timestamp}</td>
                                                   <td>
                                                     <UiDialogLauncher header="<h4><i className='fa fa-warning'/> Bu keyi silmek istediğinizden emin misiniz?</h4>" content={<SilDialogKutusu />} className="btn btn-default">
@@ -173,10 +172,8 @@ export class SSKullanilanSistemler extends React.Component {
 
 }
 
-
-
 const Component = () => {
-  return <SSKullanilanSistemler title="Kullanılan Sistmler" datasource="/ss/kullanilansistemler"/>
+  return <SSToplamaKanallari title="Toplama Kanalları" datasource="/ss/toplamakanallari"/>
 }
 
 export default Component;

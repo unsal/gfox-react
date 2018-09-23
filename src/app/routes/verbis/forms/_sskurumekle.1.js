@@ -1,27 +1,16 @@
 // Tanımlar > Profiller > Profil Ekle..
 
 import React from 'react';
-import {getAPI}  from '../../../config/config';
 import axios from 'axios';
+import {SelectBox} from './fields.js';
+import {tanimlarID} from '../../../config/config';
 
-//Redux
-import * as gfox from "../../../components/_gfox/GfoxActions";
 
-// Form Profil Ekle
-
-// export default (props) => {
-// bunun yerine state için class kullandım
-
-export default class TanimEkle extends React.Component {
+export default class SSKurumEkle extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      id:0,
-      name:'',
-      phone_area: '',
-      secure:'',
-      url: getAPI.addTanimlar,
       message: '',
       error: false
     }
@@ -48,13 +37,9 @@ export default class TanimEkle extends React.Component {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    // form yerine arg için:
-    // const {id, name, url } = this.state;
-    // axios.post(url, {id, name})
-
     axios({
       method: 'POST',
-      url: this.state.url,
+      url: this.state.url_add_sskurumlar,
       data: formData,
       // config: { headers: {'Content-Type': 'multipart/form-data' }}
       })
@@ -64,8 +49,8 @@ export default class TanimEkle extends React.Component {
     .then(()=>
       {
         const {data, store} = this.props;
-        const dataCopy = data.concat([{"name":formData.get("name")}])
-        store.dispatch(gfox.updateStoreData(dataCopy))
+        // const dataCopy = data.concat([{"name":formData.get("name")}])
+        // store.dispatch(gfox.updateStoreData(dataCopy))
       }
     )
     .catch(error => {
@@ -78,8 +63,6 @@ export default class TanimEkle extends React.Component {
   return (
     <form onSubmit={this.handleSubmit}>
 
-      <input type="hidden" name="id" value={this.props.id} />
-
         <div className="modal fade" id="myModal" tabIndex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
@@ -88,50 +71,21 @@ export default class TanimEkle extends React.Component {
                   &times;
                 </button>
                 <h4 className="modal-title" id="myModalLabel">
-                  {this.props.title+" Ekle"}
+                  Paylaşılan Kurumlar
                 </h4>
               </div>
               <div className="modal-body">
                 <div className="row">
                   <div className="col-md-12">
                     <div className="form-group">
+                        <span>Süreç Sahibi</span>
+                        <SelectBox id={tanimlarID.birimler}/>
+                        <span>Kişisel Veri Paylaşılan Kurum</span>
+                        <SelectBox id={tanimlarID.kurumlar}/>
 
-                  {this.props.id==="saklamasuresi"?
-                       <select name="name" className="form-control" onChange={this.handleChange} >
-                          <option value="2">2 ay</option>
-                          <option value="6">6 ay</option>
-                          <option value="12">12 ay</option>
-                          <option value="24">24 ay</option>
-                          <option value="60">60 ay</option>
-                          <option value="120">120 ay</option>
-                       </select>:
-                      <input autoFocus type="text" name="name" className="form-control" placeholder={this.props.title+" Adı"} onChange={this.handleChange} required />
-                  }
                     </div>
                   </div>
                 </div>
-
-              {this.props.id==="guvenliulkeler"?
-                        <div>
-                              <div className="row">
-                                <div className="col-md-12">
-                                  <div className="form-group">
-                                    <input type="text" name="phone_area" className="form-control" placeholder="Telefon Kodu" required onChange={this.handleChange} />
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="row">
-                              <div className="col-md-12">
-                                <div className="form-group">
-                                  <label className="checkbox pull-right">
-                                        <input type="checkbox" name="secure" onChange={this.handleChange} /><span>Güvenli Ülke</span>
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                      </div>:""
-              }
-
 
               </div>
 
@@ -163,4 +117,3 @@ export default class TanimEkle extends React.Component {
             )
           }
 }
-

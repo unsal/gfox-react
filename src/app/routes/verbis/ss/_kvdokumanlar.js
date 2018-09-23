@@ -3,10 +3,9 @@ import React from 'react';
 import {Stats, WidgetGrid, JarvisWidget}  from '../../../components';
 import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
-import FormEkle from "../forms/TanimEkle";
-import {getApiURL}  from '../../../config/config';
+import FormEkle from "../forms/tanimekle";
+import {getAPI}  from '../../../config/config';
 import { MyErrorMessage, MyIcon, MySpinner } from '../unsal.js';
-
 
 // import data from "./data-data.json";
 class SilDialogKutusu extends React.Component {
@@ -41,26 +40,26 @@ class SilDialogKutusu extends React.Component {
   }
 }
 
-// FIXME: KURUMLAR
- class SSKurumlar extends React.Component {
+// FIXME: SS Dokümanlar
+export class SSDokumanlar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       apiServiceUP: true, //render fonksyinu ilk anda diğer kırmı errmessage durumunu da render ettiği için true olarak başlattım.
       searchString: "",
-      isLoading: true,
-      didMount: false
+      didMount: false,
+      isLoading: true
     }
   }
 
   dbToState() {
-    const url = getApiURL.getTanimlar+this.props.datasource;
+    const url = getAPI.getTanimlar+this.props.datasource;
     // console.log(url)
     axios.get(url)
         .then(res => {
               const api = { data: res.data, apiServiceUP: true }
-              this.setState({ ...api, didMount: true});
+              this.setState({ ...api, didMount: true });
         })
         .catch(err => {
           console.log(err);
@@ -74,7 +73,7 @@ class SilDialogKutusu extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.didMount !== this.state.didMount) {
-      this.setState({ isLoading: false })
+       this.setState({ isLoading: false })
     }
   }
 
@@ -108,11 +107,11 @@ class SilDialogKutusu extends React.Component {
                         <header>
                           <MySpinner title={this.props.title} isLoading={this.state.isLoading} />
                           <h2>
-                            {this.state.isLoading?'':
+                          {this.state.isLoading?'':
                             <button className="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
                               Ekle
                             </button>
-                            }
+                          }
                           </h2>
 
                         </header>
@@ -123,8 +122,9 @@ class SilDialogKutusu extends React.Component {
                                 <thead>
                                   <tr>
                                     <th>Kodu</th>
-                                    <th> Süreç Sahibi </th>
-                                    <th> Paylaşılan Kurum </th>
+                                    <th>Süreç Sahibi </th>
+                                    <th>Doküman </th>
+                                    <th>Yayın Durumu </th>
                                     <th>Zaman Damgası</th>
                                     <th>Aksiyon</th>
                                   </tr>
@@ -139,7 +139,8 @@ class SilDialogKutusu extends React.Component {
                                                     {key.id}
                                                   </td>
                                                   <td> {key.birim} </td>
-                                                  <td> {key.kurum} </td>
+                                                  <td> {key.dokuman} </td>
+                                                  <td> {key.yayin} </td>
                                                   <td> {key.timestamp}</td>
                                                   <td>
                                                     <UiDialogLauncher header="<h4><i className='fa fa-warning'/> Bu keyi silmek istediğinizden emin misiniz?</h4>" content={<SilDialogKutusu />} className="btn btn-default">
@@ -172,9 +173,8 @@ class SilDialogKutusu extends React.Component {
 
 }
 
-
 const Component = () => {
-  return <SSKurumlar title="Paylaşılan Kurumlar" datasource="/ss/kurumlar"/>
+  return <SSDokumanlar title="KV İçeren Dokümanlar" datasource="/ss/kvdokumanlar"/>
 }
 
 export default Component;

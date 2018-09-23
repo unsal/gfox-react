@@ -5,7 +5,7 @@
 
 export const GFOX_STORE_DATA = 'GFOX_STORE_DATA';
 
-export const updateStoreDataGfox = (data) => {
+export const updateStoreData = (data) => {
  return { type: GFOX_STORE_DATA, data }
 }
 

@@ -1,17 +1,26 @@
 Çalıştırmak için
 
 1. npm install
-2. npm run dev
+2. npm install axios
+3. npm install react-select
+4. npm run dev
 
 Errors:
-1. jquery hatası alırsan >
-  - node_modules > jQuery -> jquery olarak değiştir. küçük harf yap yani
+1. jQuery hatası alırsan >
+  - *** node_modules > jQuery -> jquery olarak değiştir. küçük harf yap yani
+  - *** npm install ile tekrar üzerine kur..
+ !!! her yeni paket yükledikten sonra jQuery dizini oluşuyor. Yukardaki adımları tekrarlaman lazım
+  - dizini kontrol et tekrar büyük harf olmadığına...
   - node_modules dizinini sakın silme
   - package-lock.json sile
-  - npm install ile tekrar üzerine kur..
-  - dizini kontrol et tekrar büyük harf olmadığına...
 
 2. duallistbox hatası alırsan > node_modules > bootstrap-duallistbox dizini YOK! demektir
   - gfox-react> bootstrap-duallistbox dizinini kopyala
   - veya: bower install bootstrap-duallistbox > çalıştır
     bower_components > bootstrap-duallistbox dizinini node_modules altına kopyala..
+
+3. Hatalı yüklenen paketleri silmek için:
+npm uninstall --save paket-adi
+
+
+

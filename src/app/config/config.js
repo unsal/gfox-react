@@ -29,7 +29,7 @@ const SmartadminConfig = {
 
         {
             name: "smart-style-2",
-            logo: "assets/img/logo-blue.png",
+            logo: "assets/img2/logo-blue.png",
             class: "btn btn-xs btn-block txt-color-darken margin-top-5",
             style: {
                 background: '#fff'
@@ -332,15 +332,46 @@ if (SmartadminConfig.voice_command) {
   };
 }
 
+// U2Y
+// Uygulamaların içinden tanimlarID.birimler şeklinde kullanmak için..
+export const tanimlarID = {
+  profiller: "profiller",
+  birimler: "birimler",
+  dayanaklar: "dayanaklar",
+  dokumanlar: "dokumanlar",
+  islemeAmaclari: "islemeamaclari",
+  toplamaKanallari: "toplamakanallari",
+  kurumlar: "kurumlar",
+  kv: "kv",
+  arsivOrtamlari: "arsivortamlari",
+  paylasimAmaclari: "paylasimAmaclari",
+  paylasimSekilleri: "paylasimsekilleri",
+  kvSistemler: "kvsistemler",
+  saklamaSuresi: "saklamasuresi",
+  guvenliUlkeler: "guvenliulkeler"
+}
+
 
 // API URL Settings
 const server = 'http://localhost:2300';
+const tanimlar = server+'/tanimlar';
 
-export const getApiURL = {
-  getTanimlar: server+'/tanimlar',
-  addTanimlar: server+'/tanimlar/add',
-  delTanimlar: server+'/tanimlar/del',
+export const getAPI = {
+  // Tanımlar
+  base: server,
+  getTanimlar: tanimlar,
+  addTanimlar: tanimlar+'/add',
+  delTanimlar: tanimlar+'/del',
+
+  // SS
+  getSSKurumlar: server+'/ss/kurumlar'
 };
+
+export const getApi4=(id)=> {
+  return (
+      tanimlar+'/'+id
+  )
+}
 
 
 export const config = SmartadminConfig;

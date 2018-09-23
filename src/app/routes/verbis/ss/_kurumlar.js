@@ -1,11 +1,12 @@
 
 import React from 'react';
-import {Stats, WidgetGrid, JarvisWidget}  from '../../../components';
+import {WidgetGrid, JarvisWidget}  from '../../../components';
 import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
-import FormEkle from "../forms/TanimEkle";
-import {getApiURL}  from '../../../config/config';
+import FormEkle from "../forms/tanimekle";
+import {getAPI}  from '../../../config/config';
 import { MyErrorMessage, MyIcon, MySpinner } from '../unsal.js';
+
 
 // import data from "./data-data.json";
 class SilDialogKutusu extends React.Component {
@@ -40,27 +41,26 @@ class SilDialogKutusu extends React.Component {
   }
 }
 
-
-// FIXME: Toplama Kanalları
-export class SSToplamaKanallari extends React.Component {
+// FIXME: KURUMLAR
+ class SSKurumlar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
       apiServiceUP: true, //render fonksyinu ilk anda diğer kırmı errmessage durumunu da render ettiği için true olarak başlattım.
       searchString: "",
+      isLoading: true,
       didMount: false,
-      isLoading: true
+      url: getAPI.getKurumlar
     }
   }
 
   dbToState() {
-    const url = getApiURL.getTanimlar+this.props.datasource;
     // console.log(url)
-    axios.get(url)
+    axios.get(this.state.url)
         .then(res => {
               const api = { data: res.data, apiServiceUP: true }
-              this.setState({ ...api, didMount: true });
+              this.setState({ ...api, didMount: true});
         })
         .catch(err => {
           console.log(err);
@@ -74,7 +74,7 @@ export class SSToplamaKanallari extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.didMount !== this.state.didMount) {
-       this.setState({ isLoading: false })
+      this.setState({ isLoading: false })
     }
   }
 
@@ -108,11 +108,11 @@ export class SSToplamaKanallari extends React.Component {
                         <header>
                           <MySpinner title={this.props.title} isLoading={this.state.isLoading} />
                           <h2>
-                          {this.state.isLoading?'':
+                            {this.state.isLoading?'':
                             <button className="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
                               Ekle
                             </button>
-                          }
+                            }
                           </h2>
 
                         </header>
@@ -123,8 +123,8 @@ export class SSToplamaKanallari extends React.Component {
                                 <thead>
                                   <tr>
                                     <th>Kodu</th>
-                                    <th>Süreç Sahibi </th>
-                                    <th>Toplama Kanalı </th>
+                                    <th> Süreç Sahibi </th>
+                                    <th> Paylaşılan Kurum </th>
                                     <th>Zaman Damgası</th>
                                     <th>Aksiyon</th>
                                   </tr>
@@ -139,7 +139,7 @@ export class SSToplamaKanallari extends React.Component {
                                                     {key.id}
                                                   </td>
                                                   <td> {key.birim} </td>
-                                                  <td> {key.kanal} </td>
+                                                  <td> {key.kurum} </td>
                                                   <td> {key.timestamp}</td>
                                                   <td>
                                                     <UiDialogLauncher header="<h4><i className='fa fa-warning'/> Bu keyi silmek istediğinizden emin misiniz?</h4>" content={<SilDialogKutusu />} className="btn btn-default">
@@ -172,8 +172,9 @@ export class SSToplamaKanallari extends React.Component {
 
 }
 
+
 const Component = () => {
-  return <SSToplamaKanallari title="Toplama Kanalları" datasource="/ss/toplamakanallari"/>
+  return <SSKurumlar title="Paylaşılan Kurumlar" datasource="/ss/kurumlar"/>
 }
 
 export default Component;

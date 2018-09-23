@@ -1,20 +1,16 @@
-// Tanim > Profiller
+ // Tanim > Profiller
 import React from "react";
 import { WidgetGrid, JarvisWidget } from "../../../components";
-import {
-  smallBox,
-  bigBox,
-  SmartMessageBox
-} from "../../../components/utils/actions/MessageActions";
+import { smallBox, bigBox, SmartMessageBox } from "../../../components/utils/actions/MessageActions";
 import UiDialogLauncher from "../../../components/ui/UiDialogLauncher";
 import axios from "axios";
 
-// Tanım Ekle
-import TanimEkle from "../forms/tanimekle";
-import SilBox from "./SilBox.js";
+// SSKurum Ekle
+import SSKurumEkle from "../forms/sskurumekle";
+// import SilBox from "./silboxKurumlar.js";
 
 import { getAPI } from "../../../config/config";
-import { MyErrorMessage, MyIcon, MySpinner } from "../unsal.js";
+import { MyErrorMessage, MyIcon, MySpinner } from "../unsal";
 
 //Redux
 import { connect } from "react-redux";
@@ -24,7 +20,7 @@ import { updateStoreData } from "../../../components/_gfox/GfoxActions";
 // import data from "./data-data.json";
 
 // FIXME: Tanimar
-class Tanimlar extends React.Component {
+class Kurumlar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +28,7 @@ class Tanimlar extends React.Component {
       searchString: "",
       isLoading: true,
       didMount: false,
-      url: getAPI.getTanimlar+'/'+this.props.id
+      url: getAPI.getSSKurumlar
     };
   }
 
@@ -81,17 +77,13 @@ class Tanimlar extends React.Component {
     else {
       // !!!because the component is rendered before the async data arrived, you should control before to render
 
-      // Sistemler ve Ulkerler'deki ekstra kolonları basmak için kontrol
-      const isSistemler = this.props.id === "kvsistemler";
-      const isUlkeler = this.props.id === "guvenliulkeler";
-
       let searchString = this.state.searchString.trim().toLowerCase();
 
       let _data = data; //reduxtan getir
 
       if (searchString.length > 0) {
         _data = _data.filter(key => {
-          return key.name.toLowerCase().match(searchString);
+          return key.birim.toLowerCase().match(searchString);
         });
       }
 
@@ -102,10 +94,7 @@ class Tanimlar extends React.Component {
               <article className="col-sm-12">
                 <JarvisWidget
                   editbutton={false}
-                  deletebutton={false}
-                  fullscreenbutton={false}
-                  togglebutton = {false}
-                  color="white"
+                  color="light"
                   colorbutton={false}
                 >
                   <header>
@@ -133,19 +122,8 @@ class Tanimlar extends React.Component {
                         <table className="table table-bordered table-striped table-condensed table-hover smart-form has-tickbox">
                           <thead>
                             <tr>
-                              <th style={{ width: "60%" }}>
-                                <input
-                                  autoFocus
-                                  type="text"
-                                  placeholder=""
-                                  onChange={this.handleChange_Search}
-                                />
-                                <i className="fa fa-fw fa-xs fa-search" />
-                              </th>
-
-                              {isSistemler ? <th>Dahili</th> : null}
-                              {isUlkeler ? <th>Tel Kodu</th> : null}
-                              {isUlkeler ? <th>Güvenli</th> : null}
+                              <th style={{width: "40%"}}>Süreç Sahibi</th>
+                              <th style={{width: "40%"}}>Paylaşılan Kurum</th>
                               <th>Kayıt Tarihi</th>
                               <th>Sil</th>
                             </tr>
@@ -154,30 +132,8 @@ class Tanimlar extends React.Component {
                             {_data.map(key => {
                               return (
                                 <tr key={key.pidm}>
-                                  <td>
-                                    <b>{key.name}</b>
-                                  </td>
-
-                                  {isSistemler ? (
-                                    <th>
-                                      {key.type === "1" ? (
-                                        <MyIcon name="fa-hdd-o" />
-                                      ) : (
-                                        <MyIcon name="fa-cloud" />
-                                      )}
-                                    </th>
-                                  ) : null}
-                                  {isUlkeler ? <th>{key.phone_area}</th> : null}
-                                  {isUlkeler ? (
-                                    <th>
-                                      {key.secure ? (
-                                        <MyIcon name="fa-check-circle" />
-                                      ) : (
-                                        ""
-                                      )}
-                                    </th>
-                                  ) : null}
-
+                                  <td> <b>{key.birim}</b> </td>
+                                  <td> <b>{key.kurum}</b> </td>
                                   <td>{key.timestamp}</td>
                                   <td>
                                     {/* FIXME: SIL BOX */}
@@ -188,7 +144,7 @@ class Tanimlar extends React.Component {
                                         key.name +
                                         "' kaydı için <h4><i className='fa fa-warning'/>Silme işlemini onaylıyor musunuz?</h4>"
                                       }
-                                      content={<SilBox id={this.props.id} pidm={key.pidm} data={_data} store={store}/>}
+                                      // content={<SilBox pidm={key.pidm} data={_data} store={store}/>}
                                       className="btn btn-default"
                                     >
                                       Sil
@@ -206,7 +162,7 @@ class Tanimlar extends React.Component {
               </article>
             </div>
           </WidgetGrid>
-            <TanimEkle title={this.props.title} id={this.props.id} data={_data} store={store} />
+          <SSKurumEkle data={_data} store={store} />
         </div>
       );
     }
@@ -220,13 +176,10 @@ class Tanimlar extends React.Component {
   }
 }
 
-
-
 // 1nci yöntem Redux connect
 // const mapStateToProps = state => ({ data: state.gfox.data });
-// state.gfox -> grup reducer isminden..
 const mapStateToProps = state => (state.gfox);
-export default connect(mapStateToProps)(Tanimlar)
+export default connect(mapStateToProps)(Kurumlar)
 
 // 2nci yöntem
 

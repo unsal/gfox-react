@@ -95,25 +95,25 @@ export default {
     {
       path: "ss/kurumlar",
       getComponent(nextState, cb) {
-        System.import("./ss/kurumlar").then(m => { cb(null, m.default); });
+        System.import("./ss/sskurumlar").then(m => { cb(null, m.default); });
       }
     },
     {
       path: "ss/kvdokumanlar",
       getComponent(nextState, cb) {
-        System.import("./ss/kvdokumanlar").then(m => { cb(null, m.default); });
+        System.import("./ss/_kvdokumanlar").then(m => { cb(null, m.default); });
       }
     },
     {
       path: "ss/toplamakanallari",
       getComponent(nextState, cb) {
-        System.import("./ss/toplamakanallari").then(m => { cb(null, m.default); });
+        System.import("./ss/_toplamakanallari").then(m => { cb(null, m.default); });
       }
     },
     {
       path: "ss/kullanilansistemler",
       getComponent(nextState, cb) {
-        System.import("./ss/kullanilansistemler").then(m => { cb(null, m.default); });
+        System.import("./ss/_kullanilansistemler").then(m => { cb(null, m.default); });
       }
     },
   ]
